@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, DM_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
-import FloatingMenu from "@/components/FloatingMenu";
-import { SiteFooter } from "@/components/SiteFooter";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 import "./globals.css";
 
@@ -49,8 +49,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${barlowCondensed.variable} ${dmSans.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0A0F1E] text-[#F8FAFC]">
-        <FloatingMenu />
-        <main className="flex-1">{children}</main>
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

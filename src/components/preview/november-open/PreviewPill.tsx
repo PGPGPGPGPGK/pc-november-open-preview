@@ -79,26 +79,34 @@ export function PreviewPill() {
   };
 
   return (
-    <div ref={wrapRef}>
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-controls="nov-preview-panel"
-        onClick={() => setOpen((o) => !o)}
-        className="fixed left-1/2 top-4 z-[55] flex h-12 -translate-x-1/2 items-center gap-2 rounded-full border border-volt/60 bg-navy/90 px-4 font-mono text-[11px] uppercase tracking-widest text-volt shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-md transition hover:border-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:top-6 md:h-14 md:px-5"
-      >
-        <span aria-hidden="true" className="h-2 w-2 rounded-full bg-volt" />
-        <span className="hidden sm:inline">Design preview</span>
-        <span className="sm:hidden">Preview</span>
-        <SlidersIcon className="h-4 w-4" />
-      </button>
+    <div ref={wrapRef} className="sticky top-16 z-40">
+      <div className="border-b border-volt/30 bg-[#0F1522]">
+        <div className="mx-auto flex min-h-10 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
+          <p className="flex items-center gap-2 text-xs font-semibold leading-snug text-volt">
+            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-volt" />
+            <span>
+              Design preview <span className="font-normal text-grey-200">· not live · nothing is submitted</span>
+            </span>
+          </p>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="nov-preview-panel"
+            onClick={() => setOpen((o) => !o)}
+            className="flex min-h-10 shrink-0 items-center gap-1.5 rounded-full px-2 text-xs font-semibold text-white hover:text-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-volt"
+          >
+            <SlidersIcon className="h-4 w-4" />
+            Controls
+          </button>
+        </div>
+      </div>
 
       {open ? (
         <div
           id="nov-preview-panel"
           role="dialog"
           aria-label="Design preview controls"
-          className="fixed left-1/2 top-[4.5rem] z-[56] max-h-[calc(100dvh-6rem)] w-[min(92vw,26rem)] -translate-x-1/2 overflow-y-auto rounded-2xl border border-volt/40 bg-navy-mid p-5 shadow-[0_24px_60px_rgba(0,0,0,0.55)] md:top-24"
+          className="fixed right-3 top-28 z-[56] max-h-[calc(100dvh-8rem)] w-[min(94vw,26rem)] overflow-y-auto rounded-2xl border border-volt/40 bg-navy-mid p-5 shadow-[0_24px_60px_rgba(0,0,0,0.55)] sm:right-6"
         >
           <div className="flex items-start justify-between gap-3">
             <h2 className="font-display text-2xl font-bold uppercase leading-none text-white">

@@ -91,6 +91,8 @@ export const CAPACITY_LABEL: Record<Capacity, string> = {
 };
 
 // ── Real, existing links (copied from the production site) ───────────────
+export const ORIGIN = "https://pickleball-central.co.in";
+
 /** landing/MobileApp.tsx + app/download/page.tsx */
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.snowflakeenterprises.pickleballcentral";

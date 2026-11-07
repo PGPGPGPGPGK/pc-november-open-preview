@@ -74,7 +74,7 @@ function calendarUrl(report: string | null): string {
 }
 
 export function SuccessPanel() {
-  const { view, entry, backToForm, select } = usePreview();
+  const { view, entry, capacity, backToForm, select } = usePreview();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export function SuccessPanel() {
     ? `${entry.name || "Captain"} & ${entry.partnerName || "Partner"}`
     : entry.name || "Player";
 
-  const wrapper = "outline-none";
+  const wrapper = "scroll-mt-32 outline-none";
 
   // ── Pairing request received ─────────────────────────────────────
   if (view.success === "partner") {
@@ -150,14 +150,16 @@ export function SuccessPanel() {
         <div className="mt-6 rounded-xl border border-navy-border bg-navy p-4 text-sm leading-relaxed text-grey-100">
           <p className="font-semibold text-white">Have a partner in mind already?</p>
           <p className="mt-1 text-grey-200">
-            Register a complete team for ₹1,599 and your slot is secured as soon as you pay.
+            {capacity.doubles === "full"
+              ? "Open Doubles is full. Join the complete-team waitlist for free; it doesn't hold a slot."
+              : "Register a complete team for ₹1,599 and your slot is secured as soon as you pay."}
           </p>
           <button
             type="button"
             onClick={() => select("doubles")}
             className="mt-3 inline-flex min-h-11 items-center gap-2 font-display text-base font-bold uppercase tracking-wide text-volt hover:text-volt-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-volt"
           >
-            Register a complete team <ArrowRightIcon className="h-4 w-4" />
+            {capacity.doubles === "full" ? "Join the team waitlist" : "Register a complete team"} <ArrowRightIcon className="h-4 w-4" />
           </button>
         </div>
         <button type="button" onClick={backToForm} className={`mt-4 ${ghostBtnCls}`}>
@@ -222,7 +224,7 @@ export function SuccessPanel() {
           <span className="font-display text-lg font-bold text-volt">{category.report} IST</span>
         </Row>
         <Row label="Venue">Pickleball Central, Peerzadiguda</Row>
-        <Row label="Paid">{rupees(category.price ?? 0)} (simulated)</Row>
+        <Row label="Paid">{rupees(entry.paidTotal ?? category.price ?? 0)} (simulated)</Row>
         <Row label="Reference">PCO-NOV-0000 (sample)</Row>
       </dl>
 
@@ -244,9 +246,6 @@ export function SuccessPanel() {
           <CalendarIcon className="h-5 w-5" /> Add to calendar
         </a>
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-grey-400">
-        Sign in to the Pickleball Central app with the same number and email to see your entry there.
-      </p>
       <button type="button" onClick={backToForm} className={`mt-5 ${ghostBtnCls}`}>
         Register another category
       </button>

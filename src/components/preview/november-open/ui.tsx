@@ -10,7 +10,7 @@ import type { InputHTMLAttributes, ReactNode } from "react";
 import { AlertTriangleIcon, CheckIcon } from "./icons";
 
 export const labelCls =
-  "mb-1.5 block font-mono text-[11px] uppercase tracking-widest text-grey-200";
+  "mb-1.5 block font-mono text-xs font-semibold uppercase tracking-wider text-grey-200";
 
 /** 4.5:1+ placeholder on the navy field (grey-600 used on October is ~2.5:1). */
 export function inputCls(invalid: boolean, extra = ""): string {
@@ -107,7 +107,7 @@ export function TextField({
 /** Small mono tag used to mark preview-only surfaces. */
 export function PreviewTag({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-volt/50 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-volt">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-volt/50 px-2.5 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-volt">
       <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-volt" />
       {children}
     </span>

@@ -34,19 +34,22 @@ pnpm build      # static export → out/
 
 ```bash
 pnpm build
-# copy out/ to a temp folder, add an empty .nojekyll, commit it as a fresh repo, then:
-git push --force <remote> HEAD:gh-pages
+# Check out the existing gh-pages branch in a separate temporary checkout.
+# Replace its static files with out/, preserve .git, add an empty .nojekyll,
+# commit, and push gh-pages normally (preserving deployment history).
 ```
 
 ## Provenance
 
 The design source lives in the Pickleball Central monorepo (local branch `design/november-open-preview`,
 commits `0aaf1f1` and `d15d4b0`, not pushed to the organisation repo). This repo is a standalone static copy of
-`apps/web-marketing/src/components/preview/november-open/` with four adaptations only:
+`apps/web-marketing/src/components/preview/november-open/`, subsequently refined here for design review:
 
 1. `@pc/ui`'s `Container` is a local copy (`src/components/ui/Container.tsx`) with the 24px gutters production actually renders.
 2. The preview page is the site root (`src/app/page.tsx`).
-3. The site chrome (floating menu, footer) links to the live site by absolute URL; the "Read the terms" link does too.
+3. The redesigned site header and approved footer link to the live site by absolute URL, as do terms and privacy links. Only this tournament page is reproduced.
 4. `next.config.ts` exports statically under the `/pc-november-open-preview` base path, with an image loader that honours it.
 
 Production analytics, the API client and every other part of the production site are intentionally absent.
+
+See [REVIEW.md](REVIEW.md) for refinement changes, validation, typography findings and outstanding owner decisions.

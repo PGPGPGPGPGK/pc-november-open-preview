@@ -48,7 +48,7 @@ export function CategoryCard({ id, order, className }: Props) {
     <label
       ref={ref}
       style={{ order }}
-      className={`relative block scroll-mt-20 cursor-pointer rounded-2xl border-2 p-4 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-volt ${surface} ${className ?? ""}`}
+      className={`relative block scroll-mt-32 cursor-pointer rounded-2xl border-2 p-4 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-volt ${surface} ${className ?? ""}`}
     >
       <input
         type="radio"
@@ -88,7 +88,7 @@ export function CategoryCard({ id, order, className }: Props) {
                   ? `Only ${left} ${left === 1 ? "spot" : "spots"} left`
                   : `${taken} of ${max} ${c.maxUnit} taken`}
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-grey-400">
+            <span className="font-mono text-xs uppercase tracking-wider text-grey-400">
               Sample count
             </span>
           </div>

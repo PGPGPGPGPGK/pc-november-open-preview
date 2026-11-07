@@ -17,6 +17,8 @@ export type Values = {
   pDuprId: string;
   pRating: string;
   terms: boolean;
+  /** Optional promotional-email consent. Never validated, never required. */
+  marketing: boolean;
 };
 
 export type FieldKey = keyof Values;
@@ -32,6 +34,7 @@ export const EMPTY_VALUES: Values = {
   pDuprId: "",
   pRating: "",
   terms: false,
+  marketing: false,
 };
 
 /** DOM order — the first invalid field in this order receives focus. */
@@ -127,6 +130,8 @@ export function validate(v: Values, withPartner: boolean): Errors {
     }
     set("pRating", ratingError(v.pRating, "partner"));
   }
-  if (!v.terms) e.terms = "Please accept the tournament terms to continue.";
+  if (!v.terms) {
+    e.terms = "Please agree to the tournament rules, Terms & Conditions and Privacy Policy to continue.";
+  }
   return e;
 }

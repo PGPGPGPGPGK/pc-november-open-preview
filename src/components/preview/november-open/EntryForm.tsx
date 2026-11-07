@@ -14,6 +14,7 @@ import {
   CATEGORIES,
   DUPR_CAP,
   DUPR_SIGNUP_URL,
+  ORIGIN,
   PLAY_STORE_URL,
   SAMPLE_VALUES,
   rupees,
@@ -40,10 +41,8 @@ const FIELD_LABEL: Record<FieldKey, string> = {
   pDuprId: "Partner's DUPR ID",
   pRating: "Partner's rating",
   terms: "Terms",
+  marketing: "Marketing",
 };
-
-const storeBtnCls =
-  "inline-flex min-h-11 items-center rounded-lg border border-navy-border px-4 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:border-volt hover:text-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-volt";
 
 const linkCls = "text-volt underline underline-offset-2 hover:text-volt-light";
 
@@ -53,19 +52,20 @@ function AppAccountNote() {
       <SmartphoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-volt" />
       <div className="text-sm leading-relaxed">
         <p className="text-white">
-          Use the same phone number and email associated with your Pickleball Central app account.
+          Tip: use the same phone number and email as your Pickleball Central app account, if you
+          have one.
         </p>
         <p className="mt-1 text-grey-200">
-          If you do not have the app, download it and sign in using the same number.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={storeBtnCls}>
-            App Store
-          </a>
-          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className={storeBtnCls}>
+          No app yet? You can{" "}
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
+            download it on the App Store
+          </a>{" "}
+          or{" "}
+          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
             Google Play
           </a>
-        </div>
+          .
+        </p>
       </div>
     </div>
   );
@@ -147,6 +147,7 @@ export function EntryForm() {
   };
 
   const entry = (): Entry => ({
+    paidTotal: paysNow ? total : 0,
     name: values.name.trim(),
     partnerName: values.pName.trim(),
     sample: false,
@@ -188,11 +189,6 @@ export function EntryForm() {
       : isDoubles
         ? `${rupees(1599)} for the complete team · both players DUPR ${DUPR_CAP} or below · report 3 PM IST`
         : `${rupees(799)} per player · DUPR ${DUPR_CAP} or below · report 6 PM IST`;
-  const termsText = isPartner
-    ? "I understand pairing isn't guaranteed, no slot is held until both players have paid, and I accept the tournament terms."
-    : waitlist
-      ? "I understand joining the waitlist doesn't hold a spot, and I accept the tournament terms."
-      : "I accept the tournament rules and terms, and confirm the DUPR details above are accurate.";
   const submitLabel = isPartner
     ? "Send partner request"
     : waitlist
@@ -220,7 +216,7 @@ export function EntryForm() {
         <button
           type="button"
           onClick={fillSample}
-          className="min-h-11 rounded-lg border border-navy-border px-3 font-mono text-[11px] uppercase tracking-widest text-grey-200 transition hover:border-volt hover:text-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-volt"
+          className="min-h-11 rounded-lg border border-navy-border px-3 font-mono text-xs font-semibold uppercase tracking-wider text-grey-200 transition hover:border-volt hover:text-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-volt"
         >
           Fill sample data
         </button>
@@ -435,8 +431,8 @@ export function EntryForm() {
         </fieldset>
       ) : null}
 
-      {/* Terms */}
-      <div className="mt-7">
+      {/* Consent: required agreement, and a separate optional marketing opt-in */}
+      <div className="mt-7 space-y-1">
         <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm leading-relaxed text-grey-100">
           <input
             id="nov-terms"
@@ -449,18 +445,44 @@ export function EntryForm() {
             className="mt-0.5 h-5 w-5 shrink-0 accent-[#C8F400]"
           />
           <span>
-            {termsText}{" "}
-            <a href="https://pickleball-central.co.in/terms" target="_blank" rel="noopener noreferrer" className={linkCls}>
-              Read the terms
+            I agree to the{" "}
+            <a href="#rules" className={linkCls}>
+              tournament rules
             </a>
+            ,{" "}
+            <a href={`${ORIGIN}/terms`} target="_blank" rel="noopener noreferrer" className={linkCls}>
+              Terms &amp; Conditions
+            </a>{" "}
+            and{" "}
+            <a href={`${ORIGIN}/privacy`} target="_blank" rel="noopener noreferrer" className={linkCls}>
+              Privacy Policy
+            </a>
+            . <span className="text-volt">*</span>
           </span>
         </label>
         {shown("terms") !== undefined ? (
-          <p id="nov-terms-msg" className="mt-1.5 flex items-start gap-1.5 text-sm text-red-400">
+          <p id="nov-terms-msg" className="flex items-start gap-1.5 pb-1 text-sm text-red-400">
             <AlertTriangleIcon className="mt-0.5 h-4 w-4 shrink-0" />
             <span>{shown("terms")}</span>
           </p>
         ) : null}
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm leading-relaxed text-grey-100">
+          <input
+            id="nov-marketing"
+            type="checkbox"
+            checked={values.marketing}
+            onChange={(e) => set("marketing", e.target.checked)}
+            aria-describedby="nov-marketing-note"
+            className="mt-0.5 h-5 w-5 shrink-0 accent-[#C8F400]"
+          />
+          <span>
+            I&apos;d like to receive tournament news, offers and promotional emails from Pickleball
+            Central. I can unsubscribe at any time.
+          </span>
+        </label>
+        <p id="nov-marketing-note" className="pl-8 text-xs leading-relaxed text-grey-400">
+          Optional. Not needed to register, pay, request a partner or join a waitlist.
+        </p>
       </div>
 
       {/* Total + coupon */}

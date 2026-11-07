@@ -129,7 +129,8 @@ export function CheckoutSheet({
               </div>
             </dl>
             <p className="mt-2 text-xs leading-relaxed text-grey-200">
-              Passed to Razorpay automatically, so you never type these twice.
+              Passed to Razorpay automatically, so you never type these twice. Razorpay may still ask
+              you to verify your payment method, such as a card OTP or UPI PIN.
             </p>
           </div>
 

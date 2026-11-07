@@ -26,6 +26,7 @@ export type SuccessKind = "paid" | "partner" | "waitlist";
 export type View = { kind: "form" } | { kind: "success"; success: SuccessKind; category: CategoryId };
 
 export type Entry = {
+  paidTotal?: number;
   name: string;
   partnerName: string;
   /** True when the details are canned sample values (preview jump), not typed in. */
