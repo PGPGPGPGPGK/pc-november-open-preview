@@ -1,0 +1,8 @@
+node_modules/
+.next/
+out/
+.env*
+*.log
+.playwright-cli/
+next-env.d.ts
+tsconfig.tsbuildinfo
