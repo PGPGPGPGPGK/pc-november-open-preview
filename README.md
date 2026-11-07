@@ -44,7 +44,7 @@ The design source lives in the Pickleball Central monorepo (local branch `design
 commits `0aaf1f1` and `d15d4b0`, not pushed to the organisation repo). This repo is a standalone static copy of
 `apps/web-marketing/src/components/preview/november-open/` with four adaptations only:
 
-1. `@pc/ui`'s `Container` is a local copy (`src/components/ui/Container.tsx`).
+1. `@pc/ui`'s `Container` is a local copy (`src/components/ui/Container.tsx`) with the 24px gutters production actually renders.
 2. The preview page is the site root (`src/app/page.tsx`).
 3. The site chrome (floating menu, footer) links to the live site by absolute URL; the "Read the terms" link does too.
 4. `next.config.ts` exports statically under the `/pc-november-open-preview` base path, with an image loader that honours it.
