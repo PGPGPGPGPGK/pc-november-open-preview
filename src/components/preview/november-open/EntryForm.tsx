@@ -388,7 +388,7 @@ export function EntryForm() {
             Your partner
           </legend>
           <p className="mb-4 mt-1 text-sm text-grey-200">
-            Enter your partner's name, mobile number, DUPR ID and rating.
+            Enter your partner&apos;s name, mobile number, DUPR ID and rating.
           </p>
           <div className="space-y-4">
             <TextField
