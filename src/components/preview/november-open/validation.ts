@@ -14,6 +14,7 @@ export type Values = {
   duprId: string;
   rating: string;
   pName: string;
+  pPhone: string;
   pDuprId: string;
   pRating: string;
   terms: boolean;
@@ -31,6 +32,7 @@ export const EMPTY_VALUES: Values = {
   duprId: "",
   rating: "",
   pName: "",
+  pPhone: "",
   pDuprId: "",
   pRating: "",
   terms: false,
@@ -45,6 +47,7 @@ export const FIELD_ORDER: FieldKey[] = [
   "duprId",
   "rating",
   "pName",
+  "pPhone",
   "pDuprId",
   "pRating",
   "terms",
@@ -120,6 +123,10 @@ export function validate(v: Values, withPartner: boolean): Errors {
   set("rating", ratingError(v.rating, ""));
   if (withPartner) {
     set("pName", nameError(v.pName, "partner"));
+    set("pPhone", phoneError(v.pPhone));
+    if (normalizePhone(v.pPhone) !== null && normalizePhone(v.pPhone) === normalizePhone(v.phone)) {
+      e.pPhone = "Enter your partner’s own mobile number.";
+    }
     set("pDuprId", duprIdMessage(v.pDuprId, "", v.pName, "partner"));
     if (
       e.pDuprId === undefined &&
