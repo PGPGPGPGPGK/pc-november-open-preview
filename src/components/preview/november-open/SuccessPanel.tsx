@@ -101,7 +101,7 @@ export function SuccessPanel() {
       { title: "We look for a partner", body: "First-come, first-served. Pairing isn't guaranteed." },
       { title: "We contact you", body: "If a suitable partner is found, we'll get in touch." },
       { title: "You both agree", body: "Each player confirms before anything is charged." },
-      { title: "Payment requested", body: "₹900 each — only after pairing is confirmed." },
+      { title: "Payment requested", body: "₹800 each — only after pairing is confirmed." },
       { title: "Slot confirmed", body: "A pairing request alone doesn't guarantee a slot." },
     ];
     return (
@@ -162,6 +162,9 @@ export function SuccessPanel() {
             {capacity.doubles === "full" ? "Join the team waitlist" : "Register a complete team"} <ArrowRightIcon className="h-4 w-4" />
           </button>
         </div>
+        <button type="button" onClick={() => select("singles")} className={`mt-4 ${ghostBtnCls}`}>
+          Register for Open Singles separately — ₹799
+        </button>
         <button type="button" onClick={backToForm} className={`mt-4 ${ghostBtnCls}`}>
           Back to categories
         </button>
