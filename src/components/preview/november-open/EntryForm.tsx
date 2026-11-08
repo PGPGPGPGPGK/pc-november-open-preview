@@ -492,7 +492,7 @@ export function EntryForm() {
       <div className="mt-7 rounded-2xl border border-navy-border bg-navy p-4">
         <div className="flex items-baseline justify-between gap-4">
           <span className="text-sm text-grey-200">
-            {paysNow ? "Total · GST included" : "Due now"}
+            {paysNow ? "Total · tax treatment to be confirmed" : "Due now"}
           </span>
           <span className="text-right">
             {discount > 0 ? (
