@@ -26,7 +26,7 @@ export function RegisterSection() {
         </h2>
         <p className="mt-3 max-w-xl text-base leading-relaxed text-grey-200">
           DUPR {DUPR_CAP} and below. Registration closes Saturday 28 November, 11:59 PM IST. Prices
-          include GST.
+          are subject to final tax confirmation.
         </p>
 
         <div className="mt-6 flex flex-col gap-4 lg:grid lg:grid-cols-[24rem_minmax(0,1fr)] lg:gap-x-10">
