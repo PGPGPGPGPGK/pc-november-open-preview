@@ -30,7 +30,7 @@ export type Category = {
 export const CATEGORIES: Record<CategoryId, Category> = {
   singles: {
     id: "singles",
-    name: "Men's Singles",
+    name: "Open Singles",
     price: 799,
     priceLabel: "₹799",
     unit: "per player",
@@ -39,7 +39,7 @@ export const CATEGORIES: Record<CategoryId, Category> = {
     maxUnit: "players",
     meta: "Report 6 PM IST · Max 24 players",
     points: [
-      "Male players, DUPR 3.7 or below",
+      "Open to all genders, DUPR 3.7 or below",
       "DUPR ID and rating required",
       "Reporting time: 6 PM IST",
     ],
@@ -57,7 +57,7 @@ export const CATEGORIES: Record<CategoryId, Category> = {
     points: [
       "Any gender combination, both players DUPR 3.7 or below",
       "Both players' names, DUPR IDs and ratings required",
-      "Only the captain enters a phone number and email",
+      "Captain's phone and email, plus partner's phone required",
       "Reporting time: 3 PM IST",
     ],
   },
@@ -70,7 +70,7 @@ export const CATEGORIES: Record<CategoryId, Category> = {
     report: null,
     max: null,
     maxUnit: null,
-    meta: "No payment now · ₹900 each only if paired",
+    meta: "No payment now · ₹800 each only if paired",
     // The matching steps live in the form itself, so the card stays a summary.
     points: [],
   },
@@ -117,6 +117,7 @@ export const SAMPLE_VALUES = {
   duprId: "SAMPL1",
   rating: "3.45",
   pName: "Sample Partner",
+  pPhone: "9876543211",
   pDuprId: "SAMPL2",
   pRating: "3.20",
 } as const;
