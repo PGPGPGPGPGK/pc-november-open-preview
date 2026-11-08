@@ -64,16 +64,16 @@ const linkCls = "text-volt underline underline-offset-2 hover:text-volt-light";
 const WHO_CAN_ENTER = [
   "A DUPR ID and rating are required for every player, in every category.",
   `Every player must be rated ${DUPR_CAP} or below.`,
-  "Men's Singles is for male players. Open Doubles takes any gender combination.",
+  "Open Singles is for male players. Open Doubles takes any gender combination.",
 ];
 
 const HOW_ENTRY_WORKS = [
   "Registration closes Saturday 28 November, 11:59 PM IST.",
-  "Doubles: the captain enters both players' names, DUPR IDs and ratings, plus their own phone number and email, and pays ₹1,599 for the team.",
+  "Doubles: the captain enters both players' names, DUPR IDs and ratings, plus the partner's phone number and their own phone number and email, and pays ₹1,599 for the team.",
   "No partner? Request one for free. Pairing is first-come, first-served and isn't guaranteed. If a suitable partner is found we'll contact you.",
-  "Once you're paired and you both agree, each of you pays ₹900 — requested only after pairing is confirmed.",
-  "A pairing request does not guarantee a tournament slot.",
-  "A full category has a free waitlist. Joining doesn't hold a spot.",
+  "Once you're paired and you both agree, each of you pays ₹800 — requested only after pairing is confirmed.",
+  "A pairing request does not guarantee a tournament slot. You can also register for Open Singles separately.",
+  "A full category has a free waitlist. Joining doesn't hold a spot. Admins may increase capacity or invite selected waitlisted entries.",
 ];
 
 const FAQS: { q: string; a: ReactNode }[] = [
@@ -93,11 +93,11 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "How does the Open Doubles entry work?",
-    a: "The captain registers and pays ₹1,599 for the whole team, entering both players' names, DUPR IDs and ratings. Only the captain's phone number and email are needed.",
+    a: "The captain registers and pays ₹1,599 for the whole team, entering both players' names, DUPR IDs and ratings. The captain's phone number and email and the partner's phone number are required.",
   },
   {
     q: "I don't have a partner. What can I do?",
-    a: "Request a partner for free. Pairing is first-come, first-served and isn't guaranteed. We'll contact you if a suitable partner is found. Once you're paired and you both agree, each of you pays ₹900 — requested only after pairing is confirmed. A pairing request does not guarantee a tournament slot.",
+    a: "Request a partner for free. Pairing is first-come, first-served and isn't guaranteed. We'll contact you if a suitable partner is found. Once you're paired and you both agree, each of you pays ₹800 — requested only after pairing is confirmed. A pairing request does not guarantee a tournament slot.",
   },
   {
     q: "What if my category is full?",
@@ -247,7 +247,7 @@ export default function NovemberOpenPreviewPage() {
                     <p className="mt-1.5 font-display text-3xl font-bold leading-none text-volt tabular-nums">
                       6:00 PM
                     </p>
-                    <p className="mt-1 text-sm text-grey-100">Men&apos;s Singles</p>
+                    <p className="mt-1 text-sm text-grey-100">Open Singles</p>
                   </li>
                 </ol>
               </div>
