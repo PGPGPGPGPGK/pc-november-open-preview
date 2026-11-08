@@ -75,7 +75,7 @@ const PARTNER_STEPS = [
   "Requesting a partner is free — nothing is charged now.",
   "Pairing is first-come, first-served, and it isn't guaranteed.",
   "We'll contact you if a suitable partner is found.",
-  "Once you're paired and you both agree, each of you pays ₹900.",
+  "Once you're paired and you both agree, each of you pays ₹800.",
   "Payment is requested only after pairing is confirmed.",
 ];
 
@@ -181,7 +181,7 @@ export function EntryForm() {
       ? "Request a doubles partner"
       : isDoubles
         ? "Open Doubles team entry"
-        : "Men's Singles entry";
+        : "Open Singles entry";
   const subtitle = waitlist
     ? `${category.name} is full. Joining is free and doesn't hold a spot.`
     : isPartner
@@ -255,6 +255,9 @@ export function EntryForm() {
             and joining doesn&apos;t reserve a place.
           </p>
         </div>
+      ) : null}
+      {isPartner ? (
+        <p className="mt-3 text-sm leading-relaxed text-grey-200">You may also register for Open Singles independently at ₹799. Requesting a doubles partner does not reserve or pay for a Singles entry.</p>
       ) : null}
       {isPartner && doublesFull ? (
         <div className="mt-5 flex gap-3 rounded-xl border border-amber-300/50 bg-amber-300/10 p-4 text-sm leading-relaxed text-grey-100">
@@ -385,7 +388,7 @@ export function EntryForm() {
             Your partner
           </legend>
           <p className="mb-4 mt-1 text-sm text-grey-200">
-            Name, DUPR ID and rating only — no phone number or email needed.
+            Enter your partner's name, mobile number, DUPR ID and rating.
           </p>
           <div className="space-y-4">
             <TextField
@@ -504,7 +507,7 @@ export function EntryForm() {
         </div>
         {isPartner ? (
           <p className="mt-2 text-sm text-grey-200">
-            ₹900 per person is requested later, only after pairing is confirmed.
+            ₹800 per person is requested later, only after pairing is confirmed.
           </p>
         ) : null}
         {paysNow ? (
@@ -593,7 +596,7 @@ export function EntryForm() {
 
       <CheckoutSheet
         open={sheetOpen}
-        title={isDoubles ? "Open Doubles — team entry" : "Men's Singles — entry"}
+        title={isDoubles ? "Open Doubles — team entry" : "Open Singles — entry"}
         lines={[
           { label: "Category", value: category.name },
           isDoubles
