@@ -64,7 +64,7 @@ const linkCls = "text-volt underline underline-offset-2 hover:text-volt-light";
 const WHO_CAN_ENTER = [
   "A DUPR ID and rating are required for every player, in every category.",
   `Every player must be rated ${DUPR_CAP} or below.`,
-  "Open Singles is for male players. Open Doubles takes any gender combination.",
+  "Open Singles and Open Doubles are open to all genders.",
 ];
 
 const HOW_ENTRY_WORKS = [
