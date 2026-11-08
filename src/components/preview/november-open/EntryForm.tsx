@@ -38,6 +38,7 @@ const FIELD_LABEL: Record<FieldKey, string> = {
   duprId: "DUPR ID",
   rating: "DUPR rating",
   pName: "Partner's name",
+  pPhone: "Partner's mobile number",
   pDuprId: "Partner's DUPR ID",
   pRating: "Partner's rating",
   terms: "Terms",
@@ -401,6 +402,20 @@ export function EntryForm() {
               valid={isValid("pName")}
               autoComplete="off"
               placeholder="First and last name"
+            />
+            <TextField
+              id="nov-pPhone"
+              label="Partner's mobile number"
+              value={values.pPhone}
+              onChange={(v) => set("pPhone", v)}
+              onBlur={blur("pPhone")}
+              error={shown("pPhone")}
+              valid={isValid("pPhone")}
+              prefix="+91"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="10-digit mobile number"
             />
             <div className="grid gap-4 sm:grid-cols-2">
               <TextField

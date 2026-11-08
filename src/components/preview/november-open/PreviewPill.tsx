@@ -128,7 +128,7 @@ export function PreviewPill() {
 
           <div className="mt-5 space-y-4">
             <Segmented
-              label="Men's Singles capacity (sample)"
+              label="Open Singles capacity (sample)"
               value={capacity.singles}
               onChange={(c) => setCapacity("singles" satisfies PaidCategoryId, c)}
             />
